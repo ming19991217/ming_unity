@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     void movement()
     {
+       
+
         if (Input.GetAxisRaw("Vertical") != 0)
         {
             rb.velocity = new Vector2(speed , rb.velocity.y);
