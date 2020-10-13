@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rb;
     public float speed;
+    float y;
+    public float jumpForce;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,22 +19,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        y = Input.GetAxis("Horizontal");
+        
+     
+    }
+    private void FixedUpdate()
+    {
         movement();
     }
 
     void movement()
     {
-       
+        rb.velocity = new Vector2(y * speed, 0f);
 
-        if (Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(speed , rb.velocity.y);
-            anim.SetBool("跑步开关", true);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
-            anim.SetTrigger("跳跃开关");
-        }
+            rb.velocity = new Vector2(0f, jumpForce);
+            
+        }  
+      
     }
 }
