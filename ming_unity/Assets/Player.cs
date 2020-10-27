@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     void movement()
     {
-        rb.velocity = new Vector2(y * speed, 0f);
+        rb.velocity = new Vector2(y * speed,rb.velocity.y);
 
         if (Input.GetButtonDown("Jump"))
         {
